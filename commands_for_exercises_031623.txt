@@ -1,0 +1,55 @@
+## Login to Discovery:
+ssh -Y <yourusername>@login.discovery.neu.edu
+
+## Paths examples
+cd /shared/rc
+cd discovery
+cd ..
+cd -
+
+## Creating/Viewing files examples
+cd ~
+cat > filename1
+Hello
+
+cat filename1
+
+cat > filename2
+Goodbye
+
+cat filename1 filename2 > newfilename
+cat newfilename
+
+cat >> filename1
+Hi
+
+## Directory manipulation
+mkdir dirname
+mkdir dirname/another_dir
+mkdir /tmp/my_temp_dir
+rm –r /tmp/my_temp_dir
+rmdir /tmp/my_temp_dir
+
+
+## Exercise 1:
+
+srun --nodes=1 --ntasks=10 --cpus-per-task=2 --mem=1G --time=01:00:00 --partition=express –pty /bin/bash 
+squeue –u <username>
+scontrol show jobid -d <job_id>
+seff <job_id>
+python sample_script.py
+scancel <job_id>
+
+## Exercise 2:
+#!/bin/bash
+
+#SBATCH --partition=express
+#SBATCH --job-name=test
+#SBATCH --time=00:05:00
+#SBATCH –-nodes=1
+#SBATCH –-cpus-per-task=1
+#SBATCH --output=%j.output
+#SBATCH --error=%j.error
+
+
+echo "HELLO WORLD!” 
